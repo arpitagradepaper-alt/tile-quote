@@ -1,0 +1,33 @@
+.roi{margin-top:90px;padding:90px 5vw;color:#fff;background:radial-gradient(circle at 15% 0%,rgba(233,180,76,.16),transparent 45%),linear-gradient(160deg,var(--ink),var(--deep))}
+.roi-in{max-width:1100px;margin:0 auto}
+.roi h2{color:#fff;text-align:center;font-size:clamp(28px,4vw,44px);margin-bottom:12px;letter-spacing:-.01em}
+.roi .eyebrow{color:var(--y)}
+.roi .sub{color:#9bb8b4}
+.roi-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.roi-grid>div{display:flex;min-width:0}
+.roi-grid>div>*{flex:1}
+.roi-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:26px;padding:30px;backdrop-filter:blur(6px)}
+.roi-s{margin-bottom:24px}
+.roi-s:last-child{margin-bottom:0}
+.roi-s label{display:flex;justify-content:space-between;font-size:14px;margin-bottom:10px;color:#d3e4e1}
+.roi-s b{font-family:Sora,sans-serif;color:var(--y)}
+.roi-s input{width:100%;accent-color:var(--o);cursor:pointer}
+.roi-out>small,.roi-mini small{display:block;color:#9bb8b4;font-size:13px}
+.roi-big b{display:block;margin:6px 0 4px;font-family:Sora,sans-serif;font-size:clamp(36px,5vw,56px);line-height:1.1;background:linear-gradient(90deg,var(--y),var(--o));-webkit-background-clip:text;background-clip:text;color:transparent}
+.roi-mini{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.roi-mini div{padding:14px;border-radius:14px;background:rgba(255,255,255,.08)}
+.roi-mini b{font-family:Sora,sans-serif;font-size:24px}
+.roi-split{display:flex;height:10px;border-radius:10px;overflow:hidden;background:rgba(255,255,255,.12)}
+.roi-split .a,.roi-leg i.a{background:var(--teal)}
+.roi-split .b,.roi-leg i.b{background:var(--o)}
+.roi-leg{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0 20px;font-size:12px;color:#9bb8b4}
+.roi-leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.roi-btn{width:100%}
+.roi-note{margin-top:14px;font-size:12px;line-height:1.6;color:#9bb8b4}
+@media(max-width:900px){
+  .roi{padding:70px 5vw;margin-top:60px}
+  .roi-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .roi-card{padding:22px 18px;border-radius:22px}
+}

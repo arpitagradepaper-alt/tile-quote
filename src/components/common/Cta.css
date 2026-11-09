@@ -1,0 +1,6 @@
+.cta{display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center;padding:clamp(28px,5vw,56px);border-radius:32px;color:#fff;background:linear-gradient(120deg,var(--deep),var(--teal) 55%,var(--o));box-shadow:0 30px 70px rgba(15,61,62,.3)}
+.cta h2{text-align:left;font-size:clamp(26px,3.4vw,38px);margin-bottom:14px}
+.cta p{opacity:.85;line-height:1.6;margin-bottom:24px}
+.perks{display:grid;gap:12px}
+.perks div{padding:16px 20px;border-radius:16px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);font-weight:500;font-size:15px}
+@media(max-width:860px){.cta{grid-template-columns:1fr}}

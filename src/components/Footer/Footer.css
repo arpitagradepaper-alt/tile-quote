@@ -1,0 +1,9 @@
+.footer{background:var(--ink);color:#b6cfcb;padding:60px 5vw 28px}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+.footer .logo b{color:#fff}
+.fabout{margin-top:14px;max-width:300px;line-height:1.6;font-size:14px}
+.footer h4{color:#fff;margin-bottom:14px;font-size:14px}
+.footer a:not(.logo){display:block;margin-bottom:9px;font-size:14px;transition:color .2s}
+.footer a:not(.logo):hover{color:#fff}
+.copy{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+@media(max-width:860px){.fg{grid-template-columns:1fr 1fr}}

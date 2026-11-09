@@ -1,0 +1,559 @@
+﻿import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'framer-motion'
+import Words from '../../components/common/Words.jsx'
+import Reveal from '../../components/common/Reveal.jsx'
+import Tilt from '../../components/common/Tilt.jsx'
+import Counter from '../../components/common/Counter.jsx'
+import Cta from '../../components/common/Cta.jsx'
+import DemoModal from '../../components/common/DemoModal.jsx'
+import PhoneStory from './PhoneStory.jsx'
+import ProblemGame from './ProblemGame.jsx'
+import MissedCall from './MissedCall.jsx'
+import RoiCalc from './RoiCalc.jsx'
+import StockFromTally from './StockFromTally.jsx'
+import './Home.css'
+
+const KPIS = [['Total Quotes', 245], ['Orders Won', 180], ['Follow-up Due', 32], ['Low Stock', 5]]
+const TILES = [['Marble White', 120], ['Rustic Grey', 90], ['Beige Stone', 70]]
+
+const FEED = [
+  ['Quote sent on WhatsApp', 'Sharma Residence · ₹ 48,620'],
+  ['Order won', 'Verma Tiles · ₹ 1,12,400'],
+  ['Missed call, call-back task', 'Due in 15 minutes'],
+  ['Low stock alert', 'Matt Marble 24×24 · 6 boxes']
+]
+
+const MARQUEE = [
+  'Smart Quotes',
+  'WhatsApp Sharing',
+  'Follow-up Reminders',
+  'Call Management',
+  'Stock from Tally',
+  'Sales Reports',
+  'Old Stock Pushed First',
+  'GST Ready'
+]
+
+const STATS = [
+  [5, ' steps', 'enquiry to won order'],
+  [1, ' tap', 'PDF quote on WhatsApp'],
+  [15, ' min', 'missed-call callback task'],
+  [106, '', 'automated tests for safety']
+]
+
+const PROBLEMS = [
+  ['📄', 'Slow, manual quotes', 'Box counts, extra for cutting, adhesive, grout and GST worked out by hand on every enquiry.'],
+  ['🔔', 'Follow-ups forgotten', 'Customers go quiet after a quote and nobody remembers to chase them.'],
+  ['📞', 'Missed calls', 'A call that rings out is a customer who calls the next showroom.'],
+  ['📦', 'Stock surprises', 'Promising tiles that are not in the godown, while old stock sits unsold.']
+]
+
+const JOURNEY = [
+  ['📝', 'Make the quote'],
+  ['💬', 'Share on WhatsApp'],
+  ['🔔', 'Follow up'],
+  ['☎️', 'Close the sale'],
+  ['✅', 'Mark won']
+]
+
+const EXPLORE = [
+  ['🧩', 'Features', 'Smart quotes, WhatsApp sharing, stock, calls and analytics in one place.', '/features', 'Explore features'],
+  ['⏱️', 'How It Works', 'From enquiry to won order in five clear steps.', '/how-it-works', 'See the flow'],
+  ['👥', 'For Showrooms', 'Built for owners and salespersons, with a role for each.', '/showrooms', 'See roles and reports']
+]
+
+const CALC_TILES = [
+  ['Marble White', 16, 620],
+  ['Rustic Grey', 12, 540],
+  ['Beige Stone', 15, 480]
+]
+
+const FLOAT_TILES = [
+  ['8%', '18%', 46, '#E9B44C', 0],
+  ['90%', '12%', 38, '#2A9D8F', 1],
+  ['4%', '72%', 34, '#D9622B', 2],
+  ['93%', '66%', 52, '#E9B44C', 3]
+]
+
+function Hero({ onDemo }) {
+  const [n, setN] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => setN(v => (v + 1) % FEED.length), 3200)
+    return () => clearInterval(t)
+  }, [])
+
+  return (
+    <section className="hero">
+      <div className="ftiles" aria-hidden="true">
+        {FLOAT_TILES.map(([x, y, s, c, i]) => (
+          <motion.span
+            key={i}
+            style={{ left: x, top: y, width: s, height: s, background: c }}
+            animate={{ y: [0, -24, 0], rotate: [45, 80, 45] }}
+            transition={{ repeat: Infinity, duration: 6 + i, ease: 'easeInOut' }}
+          />
+        ))}
+      </div>
+
+      <div className="hero-in">
+        <div>
+          <Reveal>
+            <span className="chip">Built for tile showrooms</span>
+          </Reveal>
+
+          <h1>
+            <Words text="Quotes in minutes." />
+            <Words text="Sales on" delay={0.35} />
+            <Words className="yl" text="autopilot." delay={0.6} />
+          </h1>
+
+          <Reveal delay={0.5}>
+            <p className="lead">
+              Tile Quote turns every enquiry into a professional quotation,
+              a WhatsApp follow-up and a won order, with stock and calls under control.
+            </p>
+
+            <div className="cta-row">
+              <Link to="/contact" className="btn">
+                Book a demo &rarr;
+              </Link>
+
+              <button
+                type="button"
+                className="btn ghost play"
+                onClick={onDemo}
+              >
+                <span className="pulse">&#9654;</span> Watch demo
+              </button>
+            </div>
+
+            <div className="ticks">
+              <span>&#10003; No app to install</span>
+              <span>&#10003; Works on any phone</span>
+              <span>&#10003; Customer needs no sign-up</span>
+            </div>
+          </Reveal>
+        </div>
+
+        <Tilt className="dashwrap">
+          <div className="dash">
+            <div className="dtop">
+              <b>Dashboard</b>
+              <i>JD</i>
+            </div>
+
+            <div className="kpis">
+              {KPIS.map(([k, v]) => (
+                <div key={k}>
+                  <small>{k}</small>
+                  <b><Counter to={v} dur={2.2} /></b>
+                </div>
+              ))}
+            </div>
+
+            <div className="dbody">
+              <div className="box">
+                <small>Sales overview</small>
+
+                <svg viewBox="0 0 200 70" width="100%">
+                  <defs>
+                    <linearGradient id="lg" x1="0" x2="1">
+                      <stop offset="0" stopColor="#2A9D8F" />
+                      <stop offset="1" stopColor="#D9622B" />
+                    </linearGradient>
+                  </defs>
+
+                  <motion.path
+                    d="M5 50 C35 60 45 15 80 28 S125 62 150 30 S185 20 195 14"
+                    fill="none"
+                    stroke="url(#lg)"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{
+                      duration: 2.2,
+                      delay: 0.8,
+                      ease: 'easeInOut'
+                    }}
+                  />
+                </svg>
+              </div>
+
+              <div className="box">
+                <small>Top tiles</small>
+
+                {TILES.map(([name, v], i) => (
+                  <p key={name}>
+                    <span>{name}</span>
+                    <b>{v}</b>
+                    <motion.u
+                      initial={{ width: 0 }}
+                      animate={{ width: (v / 120) * 100 + '%' }}
+                      transition={{ delay: 1 + i * 0.2, duration: 1 }}
+                    />
+                  </p>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <motion.div
+            className="float f1"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ repeat: Infinity, duration: 4 }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={n}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <b>{FEED[n][0]}</b>
+                <small>{FEED[n][1]}</small>
+              </motion.div>
+            </AnimatePresence>
+          </motion.div>
+
+          <motion.div
+            className="float f2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ repeat: Infinity, duration: 5 }}
+          >
+            <b>Follow-up due: Day 5</b>
+            <small>Tap Remind to chat</small>
+          </motion.div>
+        </Tilt>
+      </div>
+    </section>
+  )
+}
+
+function Marquee() {
+  const row = MARQUEE.concat(MARQUEE)
+
+  return (
+    <div className="mq" aria-hidden="true">
+      <div className="mq-track">
+        {row.map((t, i) => (
+          <span key={i}>
+            <i>&#9670;</i>
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function Stats() {
+  return (
+    <Reveal>
+      <div className="stats">
+        {STATS.map(([n, s, t]) => (
+          <div key={t}>
+            <h3 className="gt">
+              <Counter to={n} />{s}
+            </h3>
+            <p>{t}</p>
+          </div>
+        ))}
+      </div>
+    </Reveal>
+  )
+}
+
+function Problem() {
+  return (
+    <section className="sec">
+      <Reveal>
+        <span className="eyebrow">THE PROBLEM</span>
+        <h2>
+          Why quoting by hand <span className="gt">loses sales</span>
+        </h2>
+        <p className="sub">
+          Four small leaks that cost every tile showroom orders, every single week.
+        </p>
+      </Reveal>
+
+      <div className="grid">
+        {PROBLEMS.map(([ic, t, d], i) => (
+          <Reveal key={t} delay={i * 0.1}>
+            <Tilt className="card">
+              <span className="ic">{ic}</span>
+              <h3>{t}</h3>
+              <p>{d}</p>
+            </Tilt>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal delay={0.2}>
+        <p className="fix gt">Tile Quote fixes all four in one tool.</p>
+      </Reveal>
+    </section>
+  )
+}
+
+function Calc() {
+  const [l, setL] = useState(12)
+  const [w, setW] = useState(14)
+  const [t, setT] = useState(0)
+
+  const cov = CALC_TILES[t][1]
+  const price = CALC_TILES[t][2]
+  const area = l * w
+  const boxes = Math.ceil((area * 1.1) / cov)
+  const sub = boxes * price
+  const extra = Math.round(sub * 0.06)
+  const gst = Math.round((sub + extra) * 0.18)
+  const total = sub + extra + gst
+
+  const mv = useMotionValue(0)
+  const shown = useTransform(
+    mv,
+    v => '₹ ' + Math.round(v).toLocaleString('en-IN')
+  )
+
+  useEffect(() => {
+    const c = animate(mv, total, {
+      duration: 0.6,
+      ease: 'easeOut'
+    })
+    return () => c.stop()
+  }, [total])
+
+  const fmt = n => '₹ ' + n.toLocaleString('en-IN')
+  const grid = Array.from({ length: Math.min(boxes, 60) })
+
+  return (
+    <div className="alt">
+      <section className="sec calc">
+        <Reveal>
+          <span className="eyebrow left">TRY IT YOURSELF</span>
+          <h2>
+            Build a quote <span className="gt">in 5 seconds</span>
+          </h2>
+          <p className="lead2">
+            Move the sliders and pick a tile. Boxes, extras, GST and total
+            update live, just like in the app.
+          </p>
+
+          <div className="slid">
+            <label>
+              <span>Length</span>
+              <b>{l} ft</b>
+            </label>
+            <input
+              type="range"
+              min="8"
+              max="30"
+              value={l}
+              onChange={e => setL(+e.target.value)}
+            />
+          </div>
+
+          <div className="slid">
+            <label>
+              <span>Width</span>
+              <b>{w} ft</b>
+            </label>
+            <input
+              type="range"
+              min="8"
+              max="30"
+              value={w}
+              onChange={e => setW(+e.target.value)}
+            />
+          </div>
+
+          <div className="tsel">
+            {CALC_TILES.map(([n], i) => (
+              <button
+                key={n}
+                type="button"
+                className={t === i ? 'on' : ''}
+                onClick={() => setT(i)}
+              >
+                {t === i && (
+                  <motion.span layoutId="tsel" className="tsel-bg" />
+                )}
+                <span>{n}</span>
+              </button>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <Tilt className="qc">
+            <div className="qc-top">
+              <b>Live quote</b>
+              <em>{area} sq ft</em>
+            </div>
+
+            <div className="floor">
+              {grid.map((_, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{
+                    delay: i * 0.012,
+                    type: 'spring',
+                    stiffness: 300,
+                    damping: 18
+                  }}
+                  style={{
+                    background: ['#0F3D3E', '#2A9D8F', '#E9B44C', '#D9622B'][i % 4]
+                  }}
+                />
+              ))}
+            </div>
+
+            <p className="qc-r">
+              <span>Boxes (10% extra for cutting)</span>
+              <b>{boxes}</b>
+            </p>
+
+            <p className="qc-r">
+              <span>Tiles</span>
+              <b>{fmt(sub)}</b>
+            </p>
+
+            <p className="qc-r">
+              <span>Adhesive and grout</span>
+              <b>{fmt(extra)}</b>
+            </p>
+
+            <p className="qc-r">
+              <span>GST 18%</span>
+              <b>{fmt(gst)}</b>
+            </p>
+
+            <div className="qc-total">
+              <span>Quote total</span>
+              <motion.b>{shown}</motion.b>
+            </div>
+          </Tilt>
+        </Reveal>
+      </section>
+    </div>
+  )
+}
+
+function Journey() {
+  return (
+    <section className="sec">
+      <Reveal>
+        <span className="eyebrow">THE FLOW</span>
+        <h2>
+          From enquiry to order, <span className="gt">on autopilot</span>
+        </h2>
+      </Reveal>
+
+      <div className="jr">
+        <motion.div
+          className="jr-line"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: '-100px' }}
+          transition={{ duration: 2, ease: 'easeInOut' }}
+        />
+
+        {JOURNEY.map(([ic, t], i) => (
+          <motion.div
+            key={t}
+            className="jr-s"
+            initial={{ opacity: 0, y: 30, scale: 0.8 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{
+              delay: i * 0.3,
+              type: 'spring',
+              stiffness: 200,
+              damping: 16
+            }}
+          >
+            <span>{ic}</span>
+            <small>STEP {i + 1}</small>
+            <b>{t}</b>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function Explore() {
+  return (
+    <div className="alt">
+      <section className="sec">
+        <Reveal>
+          <span className="eyebrow">EXPLORE TILE QUOTE</span>
+          <h2>
+            Everything your showroom needs, <span className="gt">in one app</span>
+          </h2>
+          <p className="sub">
+            Pick a page and see how it fits your showroom.
+          </p>
+        </Reveal>
+
+        <div className="grid">
+          {EXPLORE.map(([ic, t, d, to, l], i) => (
+            <Reveal key={t} delay={i * 0.1}>
+              <Tilt className="card ex">
+                <span className="ic">{ic}</span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+                <Link to={to} className="more">
+                  {l} &rarr;
+                </Link>
+              </Tilt>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default function Home() {
+  const [demo, setDemo] = useState(false)
+
+  return (
+    <>
+      <Hero onDemo={() => setDemo(true)} />
+
+      <Marquee />
+
+      <Stats />
+
+      <ProblemGame />
+
+      <PhoneStory />
+
+      {/* Missed Call section replaces Room Visualizer */}
+      <MissedCall />
+
+      <Calc />
+
+      <RoiCalc />
+
+      {/* Stock from Tally section appears after ROI Calculator */}
+      <StockFromTally />
+
+      <Explore />
+
+      <Cta />
+
+      <DemoModal
+        open={demo}
+        onClose={() => setDemo(false)}
+      />
+    </>
+  )
+}

@@ -1,0 +1,7 @@
+.intro{position:fixed;inset:0;z-index:300;display:grid;place-items:center;cursor:pointer;color:#fff;background:radial-gradient(circle at 50% 40%,rgba(42,157,143,.3),transparent 55%),linear-gradient(160deg,var(--ink),var(--deep))}
+.intro-in{text-align:center;padding:0 5vw}
+.intro-name{margin-top:10px;font-family:Sora,sans-serif;font-size:clamp(32px,6vw,52px);letter-spacing:-.01em}
+.intro-name b{font-weight:800}
+.intro-name span{font-weight:400}
+.intro p{margin-top:10px;color:#9bb8b4;font-size:15px}
+.intro-bar{position:absolute;left:0;right:0;bottom:0;height:4px;transform-origin:left;background:linear-gradient(90deg,var(--y),var(--o))}

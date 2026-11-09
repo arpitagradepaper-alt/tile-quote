@@ -1,0 +1,2 @@
+.bar{position:fixed;top:0;left:0;right:0;height:4px;z-index:100;transform-origin:0;background:linear-gradient(90deg,var(--y),var(--o))}
+.glow{position:fixed;top:0;left:0;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(42,157,143,.25),transparent 65%)}
