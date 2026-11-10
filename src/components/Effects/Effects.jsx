@@ -18,7 +18,7 @@ export default function Effects() {
 
   return (
     <>
-      <motion.div className="bar" style={{ scaleX: bar }} />
+      <motion.div className="scroll-progress" style={{ scaleX: bar }} />
       <motion.div className="glow" style={{ x: gx, y: gy }} />
     </>
   )

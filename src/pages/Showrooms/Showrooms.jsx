@@ -6,6 +6,7 @@ import Reveal from '../../components/common/Reveal.jsx'
 import Tilt from '../../components/common/Tilt.jsx'
 import Counter from '../../components/common/Counter.jsx'
 import Cta from '../../components/common/Cta.jsx'
+import { Journey, Calls } from './ShowroomExtras.jsx'
 import './Showrooms.css'
 
 const OWNER = [
@@ -267,7 +268,9 @@ export default function Showrooms() {
         <Words className="ph-y" text="one showroom" delay={0.4} />
       </PageHero>
       <Roles />
+      <Journey />
       <Reports />
+      <Calls />
       <Team />
       <Why />
       <Safe />

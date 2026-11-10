@@ -11,7 +11,6 @@ import PhoneStory from './PhoneStory.jsx'
 import ProblemGame from './ProblemGame.jsx'
 import MissedCall from './MissedCall.jsx'
 import RoiCalc from './RoiCalc.jsx'
-import StockFromTally from './StockFromTally.jsx'
 import './Home.css'
 
 const KPIS = [['Total Quotes', 245], ['Orders Won', 180], ['Follow-up Due', 32], ['Low Stock', 5]]
@@ -542,10 +541,6 @@ export default function Home() {
       <Calc />
 
       <RoiCalc />
-
-      {/* Stock from Tally section appears after ROI Calculator */}
-      <StockFromTally />
-
       <Explore />
 
       <Cta />
