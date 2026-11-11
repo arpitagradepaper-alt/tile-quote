@@ -4,6 +4,7 @@ import Navbar from './components/Navbar/Navbar.jsx'
 import Footer from './components/Footer/Footer.jsx'
 import Effects from './components/Effects/Effects.jsx'
 import Intro from './components/common/Intro.jsx'
+import ChatBot from './components/ChatBot/ChatBot.jsx'
 import Home from './pages/Home/Home.jsx'
 import Features from './pages/Features/Features.jsx'
 import HowItWorks from './pages/HowItWorks/HowItWorks.jsx'
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />
+          <ChatBot />
         </>
       )}
     </>

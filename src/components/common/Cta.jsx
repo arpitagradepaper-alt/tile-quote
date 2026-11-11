@@ -18,7 +18,6 @@ export default function Cta({ title = "Let's put it to work in your showroom" })
             <p>Book a live demo with your own tiles and prices and see your first quote in minutes.</p>
             <div className="cta-row">
               <Link to="/contact" className="btn white">Book a demo</Link>
-              <a href="https://wa.me/" className="btn ghost">Chat on WhatsApp</a>
             </div>
           </div>
           <div className="perks">

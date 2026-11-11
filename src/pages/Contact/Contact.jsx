@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import PageHero from '../../components/common/PageHero.jsx'
 import Words from '../../components/common/Words.jsx'
@@ -7,20 +7,19 @@ import Tilt from '../../components/common/Tilt.jsx'
 import Cta from '../../components/common/Cta.jsx'
 import './Contact.css'
 
-const WHATSAPP_NUMBER = '91 98XXX XXXXX'
-const PHONE_NUMBER = '91 98XXX XXXXX'
-const EMAIL = 'hello@domain.com'
 
-const REACH = [
-  ['\u{1F4AC}', 'Chat on WhatsApp', '+' + WHATSAPP_NUMBER, 'https://wa.me/'],
-  ['\u{1F4DE}', 'Call us', '+' + PHONE_NUMBER, 'tel:+91'],
-  ['\u2709\uFE0F', 'Email', EMAIL, 'mailto:' + EMAIL]
-]
+const WHATSAPP_NUMBER = '8100305708'
 
 const SEE = [
   'A quote built with your own tiles',
   'Your prices and GST rates applied',
   'WhatsApp sharing, live'
+]
+
+const WHY = [
+  ['\u{1F3AF}', 'Built for tile showrooms', 'Rooms, tiles, adhesive and GST handled in one quote.'],
+  ['\u26A1', 'Quotes in minutes', 'Create a PDF quotation and share it on WhatsApp.'],
+  ['\u{1F512}', 'Your data stays private', 'Each showroom sees only its own quotes and customers.']
 ]
 
 const STEPS = [
@@ -45,6 +44,31 @@ function validate(v) {
   if (!/^[6-9]\d{9}$/.test(v.phone)) e.phone = 'Enter a valid 10-digit mobile number'
   if (v.city.trim().length < 2) e.city = 'Please enter your city'
   return e
+}
+
+
+function buildLink(v) {
+  const when = new Date()
+    .toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })
+    .replace(/[\u202F\u00A0]/g, ' ')
+  const line = '=============================='
+  const text = [
+    '*TILE QUOTE*',
+    '*NEW DEMO REQUEST*',
+    line,
+    '*Name:* ' + v.name.trim(),
+    '*Showroom:* ' + v.showroom.trim(),
+    '*City:* ' + v.city.trim(),
+    '*Mobile:* +91 ' + v.phone,
+    '*Team size:* ' + (v.team.trim() || 'Not specified'),
+    line,
+    '*Message:*',
+    v.message.trim() || 'No message',
+    line,
+    '*Received:* ' + when,
+    '_Sent via Tile Quote website_'
+  ].join('\n')
+  return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text)
 }
 
 function Field({ label, error, children }) {
@@ -73,7 +97,7 @@ function Field({ label, error, children }) {
   )
 }
 
-function Success({ name, onReset }) {
+function Success({ name, link, onReset }) {
   return (
     <motion.div
       className="ct-ok"
@@ -102,8 +126,14 @@ function Success({ name, onReset }) {
         </svg>
       </motion.div>
       <h3>Thank you, {name.split(' ')[0]}!</h3>
-      <p>We have your details. Our team will contact you on WhatsApp shortly to set up your live demo.</p>
-      <button type="button" className="btn" onClick={onReset}>Book another demo</button>
+      <p>
+        Your demo request has been prepared in WhatsApp. If you have already sent it, our team
+        will contact you shortly. If not, please tap <b>Send</b> in WhatsApp to complete your request.
+      </p>
+      <div className="ct-ok-row">
+        <a className="btn" href={link} target="_blank" rel="noopener noreferrer">Open WhatsApp again</a>
+        <button type="button" className="btn ct-alt" onClick={onReset}>New request</button>
+      </div>
     </motion.div>
   )
 }
@@ -113,6 +143,7 @@ function DemoForm() {
   const [err, setErr] = useState({})
   const [busy, setBusy] = useState(false)
   const [done, setDone] = useState(false)
+  const [link, setLink] = useState('')
 
   const set = k => e => {
     let val = e.target.value
@@ -127,21 +158,25 @@ function DemoForm() {
     setErr(found)
     if (Object.keys(found).length) return
     setBusy(true)
-    setTimeout(() => { setBusy(false); setDone(true) }, 1300)
+    const url = buildLink(v)
+    setLink(url)
+    window.open(url, '_blank', 'noopener')
+    setTimeout(() => { setBusy(false); setDone(true) }, 600)
   }
 
-  const reset = () => { setV(EMPTY); setErr({}); setDone(false) }
+  const reset = () => { setV(EMPTY); setErr({}); setDone(false); setLink('') }
 
   return (
     <div className="ct-card">
       <AnimatePresence mode="wait">
         {done ? (
-          <Success key="ok" name={v.name} onReset={reset} />
+          <Success key="ok" name={v.name} link={link} onReset={reset} />
         ) : (
           <motion.form key="form" onSubmit={submit} noValidate
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, y: -20 }}>
-            <h2>Book a free demo</h2>
-            <p className="ct-sub">Tell us about your showroom and we will get back to you.</p>
+          
+            <h2>Book your demo</h2>
+            <p className="ct-sub">Tell us about your showroom and our team will reach out on WhatsApp.</p>
 
             <div className="ct-row">
               <Field label="Full name" error={err.name}>
@@ -175,6 +210,7 @@ function DemoForm() {
             <button type="submit" className="btn ct-submit" disabled={busy}>
               {busy ? <span className="ct-spin" /> : 'Book my demo \u2192'}
             </button>
+            <p className="ct-note">{'\u{1F512}'} Your details are used only to arrange your demo.</p>
           </motion.form>
         )}
       </AnimatePresence>
@@ -185,15 +221,7 @@ function DemoForm() {
 function Side() {
   return (
     <div className="ct-side">
-      {REACH.map(([ic, t, d, href], i) => (
-        <Reveal key={t} delay={i * 0.1}>
-          <motion.a href={href} className="ct-reach" whileHover={{ x: 8 }}>
-            <span className="ct-ic">{ic}</span>
-            <div><b>{t}</b><small>{d}</small></div>
-          </motion.a>
-        </Reveal>
-      ))}
-      <Reveal delay={0.3}>
+      <Reveal delay={0.1}>
         <div className="dark ct-see">
           <h3>In your demo, you will see</h3>
           <ul>
@@ -207,6 +235,16 @@ function Side() {
               </motion.li>
             ))}
           </ul>
+        </div>
+      </Reveal>
+      <Reveal delay={0.2}>
+        <div className="ct-why">
+          {WHY.map(([ic, t, d]) => (
+            <div key={t} className="ct-w">
+              <span className="ct-ic">{ic}</span>
+              <div><b>{t}</b><small>{d}</small></div>
+            </div>
+          ))}
         </div>
       </Reveal>
     </div>
