@@ -8,7 +8,7 @@ import Cta from '../../components/common/Cta.jsx'
 import './Contact.css'
 
 
-const WHATSAPP_NUMBER = '8100305708'
+const WHATSAPP_NUMBER = '918100305708'
 
 const SEE = [
   'A quote built with your own tiles',
@@ -334,3 +334,4 @@ export default function Contact() {
     </>
   )
 }
+
