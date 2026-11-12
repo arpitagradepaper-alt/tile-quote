@@ -41,7 +41,7 @@ const TEAM = [
   ['\u2699\uFE0F', 'Calculation rules', 'GST %, extra for cutting %, adhesive and grout rates, quote validity.'],
   ['\u{1F4C4}', 'Your shop on every quote', 'Shop details and your own terms and conditions printed on the PDF.'],
   ['\u{1F514}', 'Follow-up schedule', 'Choose the days your team is reminded to chase customers.'],
-  ['\u{1F441}\uFE0F', 'See everything', 'All quotes, customers and WhatsApp messages across the showroom.']
+  ['\u{1F441}\uFE0F', 'See everything', 'All quotes, customers and WhatsApp messages across the showroom. Create quotes for your team and delete quotes. Won quotes stay protected.']
 ]
 
 const WHY = [

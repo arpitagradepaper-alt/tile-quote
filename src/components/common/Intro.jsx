@@ -52,7 +52,7 @@ export default function Intro({ onReveal }) {
               <b>Tile</b><span>Quote</span>
             </motion.div>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 0.6 }}>
-              Quotes in minutes. Sales on autopilot.
+              Quotes in minutes. Never forget a follow-up.
             </motion.p>
           </div>
           <motion.div className="intro-bar" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 2.5, ease: 'linear' }} />

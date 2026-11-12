@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'framer-motion'
 import Words from '../../components/common/Words.jsx'
@@ -11,6 +11,7 @@ import PhoneStory from './PhoneStory.jsx'
 import ProblemGame from './ProblemGame.jsx'
 import MissedCall from './MissedCall.jsx'
 import RoiCalc from './RoiCalc.jsx'
+import OwnerBenefit from './OwnerBenefit.jsx'
 import './Home.css'
 
 const KPIS = [['Total Quotes', 245], ['Orders Won', 180], ['Follow-up Due', 32], ['Low Stock', 5]]
@@ -104,8 +105,8 @@ function Hero({ onDemo }) {
 
           <h1>
             <Words text="Quotes in minutes." />
-            <Words text="Sales on" delay={0.35} />
-            <Words className="yl" text="autopilot." delay={0.6} />
+            <Words text="Never forget a" delay={0.35} />
+            <Words className="yl" text="follow-up." delay={0.6} />
           </h1>
 
           <Reveal delay={0.5}>
@@ -450,7 +451,7 @@ function Journey() {
       <Reveal>
         <span className="eyebrow">THE FLOW</span>
         <h2>
-          From enquiry to order, <span className="gt">on autopilot</span>
+          From enquiry to order, <span className="gt">step by step</span>
         </h2>
       </Reveal>
 
@@ -527,7 +528,7 @@ export default function Home() {
     <>
       <Hero onDemo={() => setDemo(true)} />
 
-      <Marquee />
+      <OwnerBenefit />
 
       <Stats />
 

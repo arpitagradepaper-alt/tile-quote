@@ -40,11 +40,14 @@
 .eyebrow{display:block;text-align:center;color:var(--o);letter-spacing:.2em;font-size:12px;font-weight:700;margin-bottom:10px}
 .eyebrow.left{text-align:left}
 .fix{text-align:center;font-family:Sora,sans-serif;font-weight:700;font-size:20px;margin-top:40px}
-.alt{background:#eaf4f1;margin-top:90px;padding-bottom:90px}
+.alt{background:#eaf4f1;margin-top:0;padding-bottom:20px}
+.alt .sec{padding-top:70px}
+.alt + .sec{padding-top:50px}
 .ex .more{display:inline-block;margin-top:16px;color:var(--teal);font-weight:700;font-size:14px}
 .ex{border-top:4px solid var(--teal)}
 
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.sec.calc{padding-top:60px}
 .calc h2{text-align:left;margin-bottom:12px}
 .lead2{color:var(--muted);line-height:1.7;margin-bottom:26px}
 .slid{margin-bottom:20px}

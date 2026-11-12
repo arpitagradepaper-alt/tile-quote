@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import './ChatBot.css'
@@ -38,7 +38,7 @@ const KB = [
   {
     id: 'calls', chip: 'Call management',
     keys: ['call', 'calls', 'missed', 'voicemail', 'ring'],
-    text: 'Incoming calls ring your team, one after another or all at once. If nobody is free, the caller hears a greeting or leaves a voice message, and a call-back task is created, due in 15 minutes.'
+    text: 'Incoming calls ring your team, one after another or all at once. If nobody is free, the caller hears a greeting or leaves a voice message, and a call-back task is created, due in 15 minutes. Calls need a phone number and a one-time setup.'
   },
   {
     id: 'stock', chip: 'Stock and Tally',

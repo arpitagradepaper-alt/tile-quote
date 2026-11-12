@@ -1,4 +1,4 @@
-.roi{margin-top:90px;padding:90px 5vw;color:#fff;background:radial-gradient(circle at 15% 0%,rgba(233,180,76,.16),transparent 45%),linear-gradient(160deg,var(--ink),var(--deep))}
+.roi{margin-top:30px;padding:80px 5vw;color:#fff;background:radial-gradient(circle at 15% 0%,rgba(233,180,76,.16),transparent 45%),linear-gradient(160deg,var(--ink),var(--deep))}
 .roi-in{max-width:1100px;margin:0 auto}
 .roi h2{color:#fff;text-align:center;font-size:clamp(28px,4vw,44px);margin-bottom:12px;letter-spacing:-.01em}
 .roi .eyebrow{color:var(--y)}
@@ -25,7 +25,7 @@
 .roi-btn{width:100%}
 .roi-note{margin-top:14px;font-size:12px;line-height:1.6;color:#9bb8b4}
 @media(max-width:900px){
-  .roi{padding:70px 5vw;margin-top:60px}
+  .roi{padding:60px 5vw;margin-top:20px}
   .roi-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){

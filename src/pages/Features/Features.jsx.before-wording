@@ -1,0 +1,207 @@
+import { motion } from 'framer-motion'
+import PageHero from '../../components/common/PageHero.jsx'
+import Words from '../../components/common/Words.jsx'
+import Reveal from '../../components/common/Reveal.jsx'
+import Tilt from '../../components/common/Tilt.jsx'
+import Counter from '../../components/common/Counter.jsx'
+import Cta from '../../components/common/Cta.jsx'
+import './Features.css'
+
+const KEY = [
+  ['\u{1F4C4}', 'Smart Quotation Engine', 'Room-wise quotes with boxes, extra for cutting, adhesive, grout and GST worked out automatically.'],
+  ['\u{1F4AC}', 'WhatsApp Integration', "Share a professional PDF quotation in the customer's chat in one tap. No app, no sign-up."],
+  ['\u{1F514}', 'Follow-up Reminders', 'Set up to five follow-up days. Due ones show on the dashboard with a ready Remind button.'],
+  ['\u{1F4DE}', 'Call Management', 'The call rings your team. Missed calls become call-back tasks due in 15 minutes.'],
+  ['\u{1F4E6}', 'Stock Management', 'Low-stock alerts, Tally stock upload, and cheaper old-stock suggested while quoting.'],
+  ['\u{1F4C8}', 'Sales Analytics', 'Orders won, conversion, top tiles and team performance, by month.']
+]
+
+const QUOTE_POINTS = [
+  ['Room by room', 'Length x width and a tile for every room, as many rooms as needed.'],
+  ['Boxes worked out', 'Extra for cutting added, then rounded up to whole boxes.'],
+  ['Adhesive, grout and GST', "Added automatically from your showroom's own rates."],
+  ['Discount and delivery', 'Optional discount % and delivery charge on any quote.']
+]
+
+const STOCK = [
+  ['\u{1F9E9}', 'Your full tile catalogue', 'Type, size, coverage per box, price and stock for every tile. Search and filter.'],
+  ['\u2B06\uFE0F', 'Stock from Tally', 'Upload an Excel or CSV file, preview every change, then update. Choose boxes, sq ft or sq m.'],
+  ['\u{1F4E5}', 'Update stock from CSV', 'On the dashboard, upload a CSV with name and stock. Owners and salespersons can use it. Salespersons can update existing tiles only.'],
+  ['\u{1F4D1}', 'Import your price list', 'Add and update tiles from a CSV sheet, or replace the whole list. Replacing removes the old list, so check the file first.'],
+  ['\u{1F4C9}', 'Old stock pushed first', 'Flag old stock; cheaper same-size options are suggested while quoting.']
+]
+
+const SAFE = [
+  'Low-stock alert under 10 boxes',
+  'Tiles missing size or price are flagged',
+  'Stock reduces once, when a quote is won',
+  'Warning if a quote needs more than you hold',
+  'Files checked line by line before anything changes'
+]
+
+const CALL_STEPS = [
+  ['1. Call rings the team', "One after another (customer's own salesperson first) or everyone at once."],
+  ['2. Press 1 to take it', "So a phone's voicemail never counts as answered."],
+  ['3. Nobody free, or closed?', 'Caller hears a greeting or leaves a voice message.'],
+  ['4. Call-back task created', 'Due in 15 minutes, with a red count until someone calls.']
+]
+
+const CALL_REPORT = [
+  'Calls received, and how many after hours',
+  'Answered percentage',
+  'Missed calls and call-backs pending',
+  'Average time to call back',
+  'Quotes made from calls',
+  'Results for each team member'
+]
+
+const TOOLKIT = [
+  ['\u{1F4CA}', 'My dashboard', 'Orders won, open quotes, follow-ups due and customers to call.'],
+  ['\u{1F4DD}', 'New quote', 'Customer, rooms, tiles and extras with a live total bar.'],
+  ['\u{1F4C2}', 'My quotes', 'Search and filter. Share, remind, mark won or lost.'],
+  ['\u{1F465}', 'My customers', 'Phone, city, quotes and value ordered. Tap to call. Phone numbers are matched even with spaces or +91, so duplicate customers are reduced.'],
+  ['\u260E\uFE0F', 'Calls and call-backs', 'Missed-call tasks, tap-to-call and quote from a call.'],
+  ['\u{1F4AC}', 'WhatsApp log', 'Every quote and reminder shared, in one place.']
+]
+
+function Title({ eyebrow, children, sub }) {
+  return (
+    <Reveal>
+      <span className="eyebrow">{eyebrow}</span>
+      <h2>{children}</h2>
+      {sub && <p className="sub">{sub}</p>}
+    </Reveal>
+  )
+}
+
+function Cards({ items, cls = 'g3' }) {
+  return (
+    <div className={cls}>
+      {items.map(([ic, t, d], i) => (
+        <Reveal key={t} delay={(i % 3) * 0.1}>
+          <Tilt className="card"><span className="ic">{ic}</span><h3>{t}</h3><p>{d}</p></Tilt>
+        </Reveal>
+      ))}
+    </div>
+  )
+}
+
+function QuoteDemo() {
+  return (
+    <div className="alt">
+      <section className="sec split">
+        <Reveal>
+          <span className="eyebrow left">SMART QUOTING</span>
+          <h2>Quotes that <span className="gt">calculate themselves</span></h2>
+          <p className="lead2">Enter room sizes and pick a tile. Tile Quote does the maths and shows a live total as you build.</p>
+          <ul className="ticklist">
+            {QUOTE_POINTS.map(([t, d]) => (
+              <li key={t}><i>&#10003;</i><div><b>{t}</b><span>{d}</span></div></li>
+            ))}
+          </ul>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <Tilt className="qcard">
+            <div className="qhead"><b>Live quote total</b><em>Salesperson</em></div>
+            <p className="qrow"><span>Living room, 12 &times; 14 ft</span><b>12 boxes</b></p>
+            <p className="qrow"><span>Bedroom, 10 &times; 11 ft</span><b>8 boxes</b></p>
+            <p className="qrow"><span>Adhesive and grout</span><em className="tag">added</em></p>
+            <p className="qrow"><span>GST</span><em className="tag">added</em></p>
+            <p className="qrow"><span>Discount (optional)</span><em className="tag">applied</em></p>
+            <div className="qtotal"><span>Quote total</span><b><Counter to={48620} prefix={'\u20B9 '} /></b></div>
+            <div className="qnote">Cheaper old stock suggested when it fits</div>
+          </Tilt>
+        </Reveal>
+      </section>
+    </div>
+  )
+}
+
+function Stock() {
+  return (
+    <section className="sec">
+      <Title eyebrow="STOCK AND TILES">
+        Stock and tiles, <span className="gt">always up to date</span>
+      </Title>
+      <div className="stockgrid">
+        {STOCK.map(([ic, t, d], i) => (
+          <Reveal key={t} delay={i * 0.08}>
+            <Tilt className="card"><span className="ic">{ic}</span><h3>{t}</h3><p>{d}</p></Tilt>
+          </Reveal>
+        ))}
+        <Reveal delay={0.2}>
+          <div className="dark safe">
+            <h3>Safeguards</h3>
+            <ul>{SAFE.map(s => <li key={s}><i>&#10003;</i>{s}</li>)}</ul>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+function Calls() {
+  return (
+    <div className="alt">
+      <section className="sec">
+        <Title eyebrow="NEVER MISS A CALL">
+          Never lose a customer to <span className="gt">a missed call</span>
+        </Title>
+        <div className="callgrid">
+          <Reveal>
+            <div className="card steps">
+              {CALL_STEPS.map(([t, d], i) => (
+                <motion.div key={t} className="step"
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}>
+                  <b>{t}</b><span>{d}</span>
+                </motion.div>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div className="dark">
+              <h3>Owner&apos;s call report</h3>
+              <ul>{CALL_REPORT.map(s => <li key={s}><i>&#10003;</i>{s}</li>)}</ul>
+              <p className="dnote">Greeting by text or your own recording, in Hindi or any language.</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+export default function Features() {
+  return (
+    <>
+      <PageHero chip="Powerful features" sub="Smart tools, seamless workflows and powerful automation, all in one platform.">
+        <Words text="Everything you need to manage" />
+        <Words className="ph-y" text="your tile business" delay={0.4} />
+      </PageHero>
+
+      <section className="sec">
+        <Title eyebrow="KEY FEATURES">
+          A complete solution for modern <span className="gt">tile showrooms</span>
+        </Title>
+        <Cards items={KEY} />
+      </section>
+
+      <QuoteDemo />
+      <Stock />
+      <Calls />
+
+      <section className="sec">
+        <Title eyebrow="SALESPERSON TOOLKIT">
+          Everything a <span className="gt">salesperson</span> needs
+        </Title>
+        <Cards items={TOOLKIT} />
+      </section>
+
+      <Cta />
+    </>
+  )
+}

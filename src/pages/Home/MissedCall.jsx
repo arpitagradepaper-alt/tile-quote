@@ -340,7 +340,7 @@ export default function MissedCall() {
           <p>
             A call that rings out is a customer who calls the next showroom.
             Tile Quote rings your team, makes sure a real person answers, and
-            turns every missed call into a call-back task.
+            turns every missed call into a call-back task. Needs a phone number and a one-time setup.
           </p>
         </motion.div>
 

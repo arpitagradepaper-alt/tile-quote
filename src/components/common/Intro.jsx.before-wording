@@ -1,0 +1,63 @@
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import './Intro.css'
+
+const TILES = [
+  [50, 22, '#0F3D3E', 0, -130],
+  [22, 50, '#E9B44C', -130, 0],
+  [78, 50, '#2A9D8F', 130, 0],
+  [50, 78, '#D9622B', 0, 130]
+]
+
+function seen() {
+  try { return sessionStorage.getItem('tq-intro') === '1' } catch (e) { return true }
+}
+
+export default function Intro({ onReveal }) {
+  const [show, setShow] = useState(() => !seen())
+
+  useEffect(() => {
+    if (!show) return
+    try { sessionStorage.setItem('tq-intro', '1') } catch (e) {}
+    document.body.style.overflow = 'hidden'
+    const t = setTimeout(() => { onReveal(); setShow(false) }, 2600)
+    return () => { clearTimeout(t); document.body.style.overflow = '' }
+  }, [show])
+
+  const skip = () => { onReveal(); setShow(false) }
+
+  return (
+    <AnimatePresence>
+      {show && (
+        <motion.div
+          className="intro"
+          onClick={skip}
+          exit={{ y: '-100%', transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } }}
+        >
+          <div className="intro-in">
+            <motion.div animate={{ scale: [1, 1.12, 1] }} transition={{ delay: 1.3, duration: 0.6 }}>
+              <svg width="130" height="130" viewBox="0 0 100 100">
+                {TILES.map(([x, y, c, fx, fy], i) => (
+                  <motion.g key={i}
+                    initial={{ x: fx, y: fy, opacity: 0 }}
+                    animate={{ x: 0, y: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 + i * 0.12, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}>
+                    <rect x={x - 14} y={y - 14} width="28" height="28" rx="6" fill={i === 0 ? '#ffffff' : c}
+                      transform={'rotate(45 ' + x + ' ' + y + ')'} />
+                  </motion.g>
+                ))}
+              </svg>
+            </motion.div>
+            <motion.div className="intro-name" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.6 }}>
+              <b>Tile</b><span>Quote</span>
+            </motion.div>
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5, duration: 0.6 }}>
+              Quotes in minutes. Sales on autopilot.
+            </motion.p>
+          </div>
+          <motion.div className="intro-bar" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 2.5, ease: 'linear' }} />
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}

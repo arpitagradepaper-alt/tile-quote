@@ -1,0 +1,20 @@
+.ob{padding:80px 5vw 20px}
+.ob-in{max-width:1200px;margin:0 auto}
+.ob h2{font-size:clamp(28px,4vw,42px);text-align:center;margin-bottom:12px;letter-spacing:-.01em}
+.ob-sub{text-align:center;color:var(--muted);margin-bottom:40px;font-size:17px}
+
+.ob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:22px}
+.ob-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 14px 36px rgba(15,61,62,.07);border-top:4px solid var(--teal)}
+.ob-card h3{font-size:19px;margin-bottom:16px;line-height:1.3}
+.ob-row{color:var(--ink);line-height:1.6;font-size:15px;margin-bottom:14px}
+.ob-row:last-child{margin-bottom:0}
+.ob-tag{display:block;font-size:13px;font-weight:700;margin-bottom:3px}
+.ob-tag.before{color:var(--o)}
+.ob-tag.after{color:var(--teal)}
+
+.ob-dash{margin-top:26px;background:var(--deep);color:#fff;border-radius:22px;padding:30px}
+.ob-dash h3{font-size:19px;margin-bottom:16px}
+.ob-dash ul{list-style:none;padding:0;margin:0 0 18px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px 22px}
+.ob-dash li{font-size:15px;line-height:1.5}
+.ob-dash li span{color:var(--y);font-weight:700;margin-right:6px}
+.ob-dash p{color:rgba(255,255,255,.75);font-size:15px;margin:0}

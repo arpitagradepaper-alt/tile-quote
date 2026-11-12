@@ -11,7 +11,7 @@ const KEY = [
   ['\u{1F4C4}', 'Smart Quotation Engine', 'Room-wise quotes with boxes, extra for cutting, adhesive, grout and GST worked out automatically.'],
   ['\u{1F4AC}', 'WhatsApp Integration', "Share a professional PDF quotation in the customer's chat in one tap. No app, no sign-up."],
   ['\u{1F514}', 'Follow-up Reminders', 'Set up to five follow-up days. Due ones show on the dashboard with a ready Remind button.'],
-  ['\u{1F4DE}', 'Call Management', 'The call rings your team. Missed calls become call-back tasks due in 15 minutes.'],
+  ['\u{1F4DE}', 'Call Management', 'The call rings your team. Missed calls become call-back tasks due in 15 minutes. Needs a phone number and a one-time setup.'],
   ['\u{1F4E6}', 'Stock Management', 'Low-stock alerts, Tally stock upload, and cheaper old-stock suggested while quoting.'],
   ['\u{1F4C8}', 'Sales Analytics', 'Orders won, conversion, top tiles and team performance, by month.']
 ]
@@ -26,7 +26,8 @@ const QUOTE_POINTS = [
 const STOCK = [
   ['\u{1F9E9}', 'Your full tile catalogue', 'Type, size, coverage per box, price and stock for every tile. Search and filter.'],
   ['\u2B06\uFE0F', 'Stock from Tally', 'Upload an Excel or CSV file, preview every change, then update. Choose boxes, sq ft or sq m.'],
-  ['\u{1F4D1}', 'Import your price list', 'Add and update tiles from a CSV sheet in one go.'],
+  ['\u{1F4E5}', 'Update stock from CSV', 'On the dashboard, upload a CSV with name and stock. Owners and salespersons can use it. Salespersons can update existing tiles only.'],
+  ['\u{1F4D1}', 'Import your price list', 'Add and update tiles from a CSV sheet, or replace the whole list. Replacing removes the old list, so check the file first.'],
   ['\u{1F4C9}', 'Old stock pushed first', 'Flag old stock; cheaper same-size options are suggested while quoting.']
 ]
 
@@ -58,7 +59,7 @@ const TOOLKIT = [
   ['\u{1F4CA}', 'My dashboard', 'Orders won, open quotes, follow-ups due and customers to call.'],
   ['\u{1F4DD}', 'New quote', 'Customer, rooms, tiles and extras with a live total bar.'],
   ['\u{1F4C2}', 'My quotes', 'Search and filter. Share, remind, mark won or lost.'],
-  ['\u{1F465}', 'My customers', 'Phone, city, quotes and value ordered. Tap to call.'],
+  ['\u{1F465}', 'My customers', 'Phone, city, quotes and value ordered. Tap to call. Phone numbers are matched even with spaces or +91, so duplicate customers are reduced.'],
   ['\u260E\uFE0F', 'Calls and call-backs', 'Missed-call tasks, tap-to-call and quote from a call.'],
   ['\u{1F4AC}', 'WhatsApp log', 'Every quote and reminder shared, in one place.']
 ]

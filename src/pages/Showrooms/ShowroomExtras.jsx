@@ -151,7 +151,7 @@ export function Calls() {
         <Reveal>
           <span className="eyebrow">TEAM &middot; CALLS</span>
           <h2>Never lose a customer to a <span className="gt">missed call</span></h2>
-          <p className="sub">The call rings your team. If nobody picks up, it becomes a call-back task. The owner sees the full report.</p>
+          <p className="sub">The call rings your team. If nobody picks up, it becomes a call-back task. The owner sees the full report. Needs a phone number and a one-time setup.</p>
         </Reveal>
         <div className="ex-two">
           <Reveal>

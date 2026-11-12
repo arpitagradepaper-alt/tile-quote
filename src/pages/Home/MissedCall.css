@@ -1,4 +1,4 @@
-.mc-sec{position:relative;padding:110px 5vw 100px;overflow:hidden;background:radial-gradient(900px 420px at 88% 0%,rgba(42,157,143,.14),transparent 60%),radial-gradient(700px 380px at 0% 100%,rgba(233,180,76,.16),transparent 60%),var(--bg)}
+.mc-sec{position:relative;padding:80px 5vw 60px;overflow:hidden;background:radial-gradient(900px 420px at 88% 0%,rgba(42,157,143,.14),transparent 60%),radial-gradient(700px 380px at 0% 100%,rgba(233,180,76,.16),transparent 60%),var(--bg)}
 .mc-sec *{box-sizing:border-box}
 .mc-wrap{max-width:1200px;margin:0 auto}
 .mc-head{text-align:center;max-width:760px;margin:0 auto 40px}
@@ -161,7 +161,7 @@
   .mc-benefits{grid-template-columns:1fr}
 }
 @media(max-width:560px){
-  .mc-sec{padding:80px 5vw 70px}
+  .mc-sec{padding:60px 5vw 40px}
   .mc-rep-grid{grid-template-columns:1fr 1fr}
   .mc-flow-top{flex-direction:column;align-items:flex-start}
   .mc-seg button{padding:9px 13px;font-size:13px}
